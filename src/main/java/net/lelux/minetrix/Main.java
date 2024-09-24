@@ -111,7 +111,7 @@ public class Main extends JavaPlugin implements Listener {
 	{
 		try
 		{
-			InputStream stream = getClass().getResourceAsStream("/en_us.json");
+			InputStream stream = getClass().getResourceAsStream("/en_gb.json");
 			String jstr = IOUtils.toString(stream, StandardCharsets.UTF_8);
 			locale = (JsonObject)new JsonParser().parse(jstr);
 		}
