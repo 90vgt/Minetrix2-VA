@@ -32,7 +32,7 @@ A placeholder is a substring consisting of a key and `%` it, it is replaced by a
 #### Matrix -> Minecraft
 | Field | Description | Placeholders |
 |---|---|---|
-| format.matrix | Incoming message from Matrix | `user` - Display name of the sender<br>`username` - Matrix user ID of the sender<br>`body` - contents of the message |
+| format.matrix | Incoming message from Matrix | `displayname` - Display name of the sender<br>`username` - Matrix user ID of the sender<br>`body` - contents of the message |
 
 #### Minecraft -> Matrix
 The following fields are children of the `format.html` and `format.fallback` fields.  
