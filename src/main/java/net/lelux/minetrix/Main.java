@@ -149,18 +149,18 @@ public class Main extends JavaPlugin implements Listener {
 
 			if(ItemUtils.isEmpty(item)) itemstr = (c.HAND_DISABLED ? c.PLACEHOLDERS.get(0) : c.HAND_NAME);
 
-			itemstr = itemstr.replace("{name}", e.getPlayer().getName()).replace("{display-name}", e.getPlayer().getDisplayName());
+			itemstr = itemstr.replace("{name}", e.getPlayer().getName()).replace("{display-name}", e.getPlayer().getName());
 
 			msg = msg.replace("[i]" + ChatManager.SEPARATOR + e.getPlayer().getName() , itemstr);
 			msg = msg.replace("[i]", itemstr);
 		}
 
 		String html = chatMsgHTMLFormat
-				.replace("%player%", toHtml(e.getPlayer().getDisplayName()))
+				.replace("%player%", toHtml(e.getPlayer().getName()))
 				.replace("%message%", toHtml(msg));
 
 		String fallback = chatMsgFallbackFormat
-				.replace("%player%", removeColor(e.getPlayer().getDisplayName()))
+				.replace("%player%", removeColor(e.getPlayer().getName()))
 				.replace("%message%", removeColor(msg));
 
 
@@ -170,10 +170,10 @@ public class Main extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		String html = joinMsgHTMLFormat
-				.replace("%player%", e.getPlayer().getDisplayName());
+				.replace("%player%", e.getPlayer().getName());
 
 		String fallback = joinMsgFallbackFormat
-				.replace("%player%", e.getPlayer().getDisplayName());
+				.replace("%player%", e.getPlayer().getName());
 
 		sendMessage(room, joinMsgType, html, fallback);
 	}
@@ -181,10 +181,10 @@ public class Main extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onPlayerLeave(PlayerQuitEvent e) {
 		String html = leaveMsgHTMLFormat
-				.replace("%player%", e.getPlayer().getDisplayName());
+				.replace("%player%", e.getPlayer().getName());
 
 		String fallback = leaveMsgFallbackFormat
-				.replace("%player%", e.getPlayer().getDisplayName());
+				.replace("%player%", e.getPlayer().getName());
 
 		sendMessage(room, leaveMsgType, html, fallback);
 	}
@@ -193,12 +193,12 @@ public class Main extends JavaPlugin implements Listener {
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		String html = deathMsgHTMLFormat
 				.replace("%deathmsg%", e.getDeathMessage())
-				.replace("%player%", e.getEntity().getDisplayName())
+				.replace("%player%", e.getEntity().getName())
 				.replace("%cause%", e.getEntity().getLastDamageCause().getEntity().getName());
 
 		String fallback = deathMsgFallbackFormat
 				.replace("%deathmsg%", e.getDeathMessage())
-				.replace("%player%", e.getEntity().getDisplayName())
+				.replace("%player%", e.getEntity().getName())
 				.replace("%cause%", e.getEntity().getLastDamageCause().getEntity().getName());
 
 		sendMessage(room, deathMsgType, html, fallback);
@@ -216,11 +216,11 @@ public class Main extends JavaPlugin implements Listener {
 			advancementName = translated;
 	
 		String html = advancementMsgHTMLFormat
-			.replace("%player%", ev.getPlayer().getDisplayName())
+			.replace("%player%", ev.getPlayer().getName())
 			.replace("%advancement%", advancementName);
 		
 		String fallback = advancementMsgFallbackFormat
-			.replace("%player%", ev.getPlayer().getDisplayName())
+			.replace("%player%", ev.getPlayer().getName())
 			.replace("%advancement%", advancementName);
 
 		sendMessage(room, advancementMsgType, html, fallback);
